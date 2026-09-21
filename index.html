@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para ti 🌼</title>
+
+<style>
+
+:root{
+    --lila:#d9cbe2;
+    --lila-claro:#eee7f2;
+    --lila-profundo:#b69bc5;
+
+    --amarillo:#f6c928;
+    --amarillo-claro:#ffe477;
+    --amarillo-oscuro:#dba900;
+
+    --verde:#55754d;
+    --verde-claro:#78966c;
+    --verde-oscuro:#3e5d39;
+
+    --hueso:#eee3ce;
+    --papel:#fffaf0;
+    --texto:#5c4e59;
+
+    --cafe-centro:#704b24;
+    --cafe-centro-claro:#96652f;
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    margin:0;
+    overflow:hidden;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    color:var(--texto);
+    background:var(--lila);
+}
+
+button{
+    font-family:inherit;
+}
+
+
+/* =========================================================
+   ESCENAS
+========================================================= */
+
+.scene{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.scene.active{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+}
+
+
+/* =========================================================
+   ESCENA 1
+========================================================= */
+
+#scene1{
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(255,255,255,.35),
+            rgba(255,255,255,.10) 28%,
+            transparent 58%
+        ),
+        var(--lila);
+
+    flex-direction:column;
+}
+
+.start-container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:25px;
+}
+
+.start-flower{
+    position:relative;
+
+    width:150px;
+    height:150px;
+
+    cursor:pointer;
+
+    transform:scale(1);
+
+    transition:
+        transform .9s cubic-bezier(.22,.8,.25,1),
+        opacity .8s ease;
+
+    filter:
+        drop-shadow(
+            0 12px 12px rgba(73,54,76,.16)
+        );
+}
+
+.start-flower:hover{
+    transform:scale(1.035);
+}
+
+.start-flower.exit{
+    transform:
+        scale(1.8)
+        rotate(12deg);
+
+    opacity:0;
+}
+
+.start-petal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:32px;
+    height:70px;
+
+    transform-origin:50% 100%;
+
+    border-radius:
+        50% 50% 46% 46%;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            var(--amarillo-claro),
+            var(--amarillo) 52%,
+            var(--amarillo-oscuro)
+        );
+}
+
+.start-petal:nth-child(1){
+    transform:translate(-50%,-100%) rotate(0deg);
+}
+.start-petal:nth-child(2){
+    transform:translate(-50%,-100%) rotate(30deg);
+}
+.start-petal:nth-child(3){
+    transform:translate(-50%,-100%) rotate(60deg);
+}
+.start-petal:nth-child(4){
+    transform:translate(-50%,-100%) rotate(90deg);
+}
+.start-petal:nth-child(5){
+    transform:translate(-50%,-100%) rotate(120deg);
+}
+.start-petal:nth-child(6){
+    transform:translate(-50%,-100%) rotate(150deg);
+}
+.start-petal:nth-child(7){
+    transform:translate(-50%,-100%) rotate(180deg);
+}
+.start-petal:nth-child(8){
+    transform:translate(-50%,-100%) rotate(210deg);
+}
+.start-petal:nth-child(9){
+    transform:translate(-50%,-100%) rotate(240deg);
+}
+.start-petal:nth-child(10){
+    transform:translate(-50%,-100%) rotate(270deg);
+}
+.start-petal:nth-child(11){
+    transform:translate(-50%,-100%) rotate(300deg);
+}
+.start-petal:nth-child(12){
+    transform:translate(-50%,-100%) rotate(330deg);
+}
+
+.flower-center{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:45px;
+    height:45px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #ffe98d 0 10%,
+            #e8b514 38%,
+            #b98500 100%
+        );
+
+    z-index:5;
+}
+
+.start-text{
+    font-size:17px;
+    letter-spacing:.4px;
+    opacity:.78;
+
+    animation:
+        softPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes softPulse{
+
+    0%,100%{
+        opacity:.5;
+    }
+
+    50%{
+        opacity:1;
+    }
+
+}
+
+
+/* =========================================================
+   ESCENA 2
+========================================================= */
+
+#scene2{
+    background:
+        radial-gradient(
+            circle at 50% 30%,
+            rgba(255,255,255,.28),
+            transparent 55%
+        ),
+        var(--lila);
+
+    overflow:hidden;
+}
+
+.bouquet{
+    position:relative;
+
+    width:min(96vw,540px);
+    height:min(94vh,760px);
+
+    transform:translateY(20px);
+}
+
+
+/* =========================================================
+   SOBRE
+========================================================= */
+
+.envelope{
+    position:absolute;
+
+    width:180px;
+    height:120px;
+
+    left:50%;
+    top:24px;
+
+    transform:
+        translateX(-50%)
+        translateY(-30px)
+        scale(.88);
+
+    opacity:0;
+
+    /*
+       El sobre debe poder recibir el toque.
+       Se encuentra visualmente detrás del ramo,
+       pero su zona interactiva queda por encima.
+    */
+    z-index:45;
+
+    cursor:pointer;
+
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s cubic-bezier(.22,.8,.25,1);
+}
+
+.envelope.visible{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+}
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+
+    background:#e9ddc7;
+
+    border-radius:7px;
+
+    box-shadow:
+        0 10px 20px rgba(74,55,71,.14),
+        inset 0 0 0 1px rgba(120,100,80,.10);
+}
+
+.envelope-paper{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:78%;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f5ecd9,
+            var(--hueso)
+        );
+
+    clip-path:
+        polygon(
+            0 0,
+            50% 58%,
+            100% 0,
+            100% 100%,
+            0 100%
+        );
+}
+
+.envelope-flap{
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:72%;
+
+    background:#f2e6d0;
+
+    clip-path:
+        polygon(
+            0 0,
+            100% 0,
+            50% 78%
+        );
+
+    transform-origin:top center;
+
+    transition:
+        transform 1.2s cubic-bezier(.2,.75,.25,1);
+
+    z-index:4;
+}
+
+.envelope.open .envelope-flap{
+    transform:rotateX(180deg);
+}
+
+.envelope-line{
+    position:absolute;
+    inset:0;
+
+    border:1px solid rgba(108,86,72,.10);
+
+    border-radius:7px;
+
+    z-index:8;
+
+    pointer-events:none;
+}
+
+.envelope.open{
+    z-index:46;
+}
+
+
+/* =========================================================
+   TALLOS
+========================================================= */
+
+.stems{
+    position:absolute;
+
+    left:50%;
+    bottom:92px;
+
+    width:340px;
+    height:405px;
+
+    transform:translateX(-50%);
+
+    z-index:5;
+
+    pointer-events:none;
+}
+
+.stem{
+    position:absolute;
+
+    bottom:0;
+
+    width:8px;
+    height:385px;
+
+    transform-origin:bottom center;
+
+    border-radius:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--verde-oscuro),
+            var(--verde),
+            var(--verde-claro)
+        );
+
+    box-shadow:
+        1px 0 2px rgba(40,65,36,.15);
+}
+
+.s1{
+    left:36%;
+    transform:rotate(-18deg);
+}
+
+.s2{
+    left:43%;
+    transform:rotate(-10deg);
+}
+
+.s3{
+    left:48%;
+    transform:rotate(-4deg);
+}
+
+.s4{
+    left:53%;
+    transform:rotate(4deg);
+}
+
+.s5{
+    left:58%;
+    transform:rotate(11deg);
+}
+
+.s6{
+    left:63%;
+    transform:rotate(18deg);
+}
+
+.s7{
+    left:50%;
+    transform:rotate(1deg);
+}
+
+
+/* =========================================================
+   HOJAS
+========================================================= */
+
+.leaves{
+    position:absolute;
+    inset:0;
+
+    z-index:8;
+
+    pointer-events:none;
+}
+
+.leaf{
+    position:absolute;
+
+    width:70px;
+    height:35px;
+
+    border-radius:
+        100% 0 100% 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--verde-claro),
+            var(--verde-oscuro)
+        );
+
+    box-shadow:
+        inset 4px 2px 5px rgba(255,255,255,.12),
+        0 3px 6px rgba(49,69,45,.12);
+
+    opacity:0;
+
+    transform-origin:bottom left;
+
+    transition:
+        opacity .8s ease,
+        transform .9s cubic-bezier(.2,.8,.25,1);
+}
+
+.leaf::after{
+    content:"";
+
+    position:absolute;
+
+    width:58px;
+    height:2px;
+
+    left:7px;
+    top:17px;
+
+    background:
+        rgba(218,231,203,.4);
+
+    transform:rotate(-12deg);
+
+    border-radius:100%;
+}
+
+.leaf.visible{
+    opacity:1;
+}
+
+
+/* =========================================================
+   HOJAS — MÁS INTEGRADAS AL RAMO
+========================================================= */
+
+.l1{
+    left:18%;
+    bottom:245px;
+    transform:rotate(-40deg) scale(.68);
+}
+
+.l2{
+    left:64%;
+    bottom:238px;
+    transform:rotate(46deg) scale(.70);
+}
+
+.l3{
+    left:23%;
+    bottom:205px;
+    transform:rotate(-53deg) scale(.62);
+}
+
+.l4{
+    left:65%;
+    bottom:198px;
+    transform:rotate(56deg) scale(.64);
+}
+
+.l5{
+    left:32%;
+    bottom:280px;
+    transform:rotate(-24deg) scale(.60);
+}
+
+.l6{
+    left:56%;
+    bottom:282px;
+    transform:rotate(29deg) scale(.62);
+}
+
+.l7{
+    left:13%;
+    bottom:290px;
+    transform:rotate(-48deg) scale(.52);
+}
+
+.l8{
+    left:70%;
+    bottom:285px;
+    transform:rotate(50deg) scale(.54);
+}
+
+.l9{
+    left:36%;
+    bottom:215px;
+    transform:rotate(-17deg) scale(.56);
+}
+
+.l10{
+    left:52%;
+    bottom:210px;
+    transform:rotate(22deg) scale(.58);
+}
+
+
+/* =========================================================
+   FLORES
+========================================================= */
+
+.flowers{
+    position:absolute;
+    inset:0;
+
+    z-index:12;
+
+    /*
+       Muy importante:
+       las flores no bloquean el toque del sobre.
+    */
+    pointer-events:none;
+}
+
+.flower{
+    position:absolute;
+
+    width:100px;
+    height:100px;
+
+    opacity:0;
+
+    transform:
+        scale(.55)
+        translateY(15px);
+
+    transition:
+        opacity .9s ease,
+        transform 1.15s cubic-bezier(.18,.82,.25,1);
+
+    filter:
+        drop-shadow(
+            0 8px 7px rgba(71,51,68,.13)
+        );
+}
+
+.flower.visible{
+    opacity:1;
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+
+/* =========================================================
+   GERBERAS
+========================================================= */
+
+.gerbera{
+    position:absolute;
+    inset:0;
+}
+
+.gerbera-petal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:25px;
+    height:52px;
+
+    transform-origin:50% 100%;
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--amarillo-oscuro),
+            var(--amarillo-claro) 35%,
+            var(--amarillo) 70%,
+            var(--amarillo-oscuro)
+        );
+
+    box-shadow:
+        inset 0 -3px 4px rgba(157,112,0,.12);
+}
+
+.gerbera-petal:nth-child(1){
+    transform:translate(-50%,-100%) rotate(0deg);
+}
+
+.gerbera-petal:nth-child(2){
+    transform:translate(-50%,-100%) rotate(45deg);
+}
+
+.gerbera-petal:nth-child(3){
+    transform:translate(-50%,-100%) rotate(90deg);
+}
+
+.gerbera-petal:nth-child(4){
+    transform:translate(-50%,-100%) rotate(135deg);
+}
+
+.gerbera-petal:nth-child(5){
+    transform:translate(-50%,-100%) rotate(180deg);
+}
+
+.gerbera-petal:nth-child(6){
+    transform:translate(-50%,-100%) rotate(225deg);
+}
+
+.gerbera-petal:nth-child(7){
+    transform:translate(-50%,-100%) rotate(270deg);
+}
+
+.gerbera-petal:nth-child(8){
+    transform:translate(-50%,-100%) rotate(315deg);
+}
+
+.gerbera-petal.inner{
+    width:18px;
+    height:39px;
+
+    opacity:.9;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e5ad00,
+            #ffdf4c,
+            #d89e00
+        );
+}
+
+.gerbera-petal.inner:nth-child(9){
+    transform:translate(-50%,-100%) rotate(22deg);
+}
+
+.gerbera-petal.inner:nth-child(10){
+    transform:translate(-50%,-100%) rotate(67deg);
+}
+
+.gerbera-petal.inner:nth-child(11){
+    transform:translate(-50%,-100%) rotate(112deg);
+}
+
+.gerbera-petal.inner:nth-child(12){
+    transform:translate(-50%,-100%) rotate(157deg);
+}
+
+.gerbera-petal.inner:nth-child(13){
+    transform:translate(-50%,-100%) rotate(202deg);
+}
+
+.gerbera-petal.inner:nth-child(14){
+    transform:translate(-50%,-100%) rotate(247deg);
+}
+
+.gerbera-petal.inner:nth-child(15){
+    transform:translate(-50%,-100%) rotate(292deg);
+}
+
+.gerbera-petal.inner:nth-child(16){
+    transform:translate(-50%,-100%) rotate(337deg);
+}
+
+
+/* CENTRO CAFÉ */
+
+.gerbera-center{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:29px;
+    height:29px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 28%,
+            #c18a4a 0 8%,
+            var(--cafe-centro-claro) 32%,
+            var(--cafe-centro) 65%,
+            #4c321b 100%
+        );
+
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,.18),
+        0 2px 4px rgba(73,51,0,.18);
+
+    z-index:10;
+}
+
+
+/* =========================================================
+   ROSAS
+========================================================= */
+
+.rose{
+    position:absolute;
+    inset:0;
+}
+
+.rose-base{
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    width:76px;
+    height:68px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 45%,
+            #fff09b 0%,
+            #f6d34b 42%,
+            #dca900 72%,
+            #ad7900 100%
+        );
+
+    box-shadow:
+        inset 0 -8px 12px rgba(132,91,0,.14);
+}
+
+.rose-petal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    transform-origin:50% 75%;
+
+    border-radius:
+        58% 48% 52% 44%;
+
+    background:
+        radial-gradient(
+            ellipse at 42% 32%,
+            #fff0a0 0%,
+            #f8d54e 34%,
+            #e8b817 67%,
+            #b87f00 100%
+        );
+
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.25),
+        inset -3px -4px 7px rgba(130,87,0,.14);
+}
+
+.rose-petal.p1{
+    width:62px;
+    height:57px;
+    transform:translate(-50%,-73%) rotate(0deg);
+}
+
+.rose-petal.p2{
+    width:62px;
+    height:57px;
+    transform:translate(-50%,-73%) rotate(72deg);
+}
+
+.rose-petal.p3{
+    width:62px;
+    height:57px;
+    transform:translate(-50%,-73%) rotate(144deg);
+}
+
+.rose-petal.p4{
+    width:62px;
+    height:57px;
+    transform:translate(-50%,-73%) rotate(216deg);
+}
+
+.rose-petal.p5{
+    width:62px;
+    height:57px;
+    transform:translate(-50%,-73%) rotate(288deg);
+}
+
+.rose-petal.inner{
+    width:47px;
+    height:48px;
+
+    background:
+        radial-gradient(
+            ellipse at 45% 30%,
+            #fff3a8 0%,
+            #f7d85b 36%,
+            #dca500 76%,
+            #a87300 100%
+        );
+}
+
+.rose-petal.p6{
+    transform:translate(-50%,-69%) rotate(36deg);
+}
+
+.rose-petal.p7{
+    transform:translate(-50%,-69%) rotate(108deg);
+}
+
+.rose-petal.p8{
+    transform:translate(-50%,-69%) rotate(180deg);
+}
+
+.rose-petal.p9{
+    transform:translate(-50%,-69%) rotate(252deg);
+}
+
+.rose-petal.p10{
+    transform:translate(-50%,-69%) rotate(324deg);
+}
+
+.rose-curl{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:27px;
+    height:27px;
+
+    transform:
+        translate(-50%,-50%)
+        rotate(-15deg);
+
+    border-radius:
+        55% 45% 50% 45%;
+
+    background:
+        radial-gradient(
+            circle at 38% 35%,
+            #fff2a0,
+            #edc13a 48%,
+            #bd8500 100%
+        );
+
+    box-shadow:
+        inset 2px 2px 3px rgba(255,255,255,.3);
+
+    z-index:15;
+}
+
+.rose-curl::before{
+    content:"";
+
+    position:absolute;
+
+    width:14px;
+    height:10px;
+
+    left:7px;
+    top:8px;
+
+    border-left:
+        3px solid rgba(170,117,0,.55);
+
+    border-bottom:
+        3px solid rgba(170,117,0,.55);
+
+    border-radius:
+        0 0 0 12px;
+
+    transform:rotate(-25deg);
+}
+
+
+/* =========================================================
+   DISTRIBUCIÓN COMPACTA — 14 FLORES
+========================================================= */
+
+/* -------------------------
+   FONDO
+------------------------- */
+
+.f1{
+    width:70px;
+    height:70px;
+    left:18%;
+    top:16%;
+    transform:scale(.5) rotate(-12deg);
+    z-index:4;
+}
+
+.f2{
+    width:72px;
+    height:72px;
+    left:70%;
+    top:15%;
+    transform:scale(.5) rotate(13deg);
+    z-index:4;
+}
+
+.f3{
+    width:76px;
+    height:76px;
+    left:36%;
+    top:12%;
+    transform:scale(.5) rotate(-5deg);
+    z-index:4;
+}
+
+.f4{
+    width:72px;
+    height:72px;
+    left:52%;
+    top:13%;
+    transform:scale(.5) rotate(8deg);
+    z-index:5;
+}
+
+
+/* -------------------------
+   SEGUNDO PLANO
+------------------------- */
+
+.f5{
+    width:95px;
+    height:95px;
+    left:7%;
+    top:25%;
+    transform:scale(.5) rotate(-14deg);
+    z-index:14;
+}
+
+.f6{
+    width:104px;
+    height:104px;
+    left:35%;
+    top:22%;
+    transform:scale(.5) rotate(4deg);
+    z-index:15;
+}
+
+.f7{
+    width:98px;
+    height:98px;
+    left:61%;
+    top:25%;
+    transform:scale(.5) rotate(13deg);
+    z-index:14;
+}
+
+.f8{
+    width:88px;
+    height:88px;
+    left:22%;
+    top:32%;
+    transform:scale(.5) rotate(-9deg);
+    z-index:16;
+}
+
+
+/* -------------------------
+   FRENTE
+------------------------- */
+
+.f9{
+    width:112px;
+    height:112px;
+    left:7%;
+    top:42%;
+    transform:scale(.5) rotate(-15deg);
+    z-index:25;
+}
+
+.f10{
+    width:116px;
+    height:116px;
+    left:37%;
+    top:39%;
+    transform:scale(.5) rotate(6deg);
+    z-index:27;
+}
+
+.f11{
+    width:108px;
+    height:108px;
+    left:64%;
+    top:42%;
+    transform:scale(.5) rotate(16deg);
+    z-index:25;
+}
+
+.f12{
+    width:94px;
+    height:94px;
+    left:20%;
+    top:47%;
+    transform:scale(.5) rotate(-7deg);
+    z-index:26;
+}
+
+.f13{
+    width:92px;
+    height:92px;
+    left:52%;
+    top:47%;
+    transform:scale(.5) rotate(10deg);
+    z-index:28;
+}
+
+.f14{
+    width:82px;
+    height:82px;
+    left:49%;
+    top:31%;
+    transform:scale(.5) rotate(-4deg);
+    z-index:18;
+}
+
+/* =========================================================
+   ENVOLTURA
+========================================================= */
+
+.wrapper{
+    position:absolute;
+
+    left:50%;
+    bottom:20px;
+
+    width:380px;
+    height:300px;
+
+    transform:
+        translateX(-50%)
+        translateY(30px)
+        scale(.86);
+
+    opacity:0;
+
+    z-index:40;
+
+    transition:
+        opacity 1.3s ease,
+        transform 1.3s cubic-bezier(.18,.82,.25,1);
+
+    pointer-events:none;
+}
+
+.wrapper.visible{
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1);
+}
+
+.wrap-main{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            105deg,
+            #e5d7bd 0%,
+            #f1e6d2 24%,
+            #eee0c5 48%,
+            #d9c9ad 73%,
+            #eee3cf 100%
+        );
+
+    clip-path:
+        polygon(
+            7% 2%,
+            93% 2%,
+            88% 25%,
+            78% 50%,
+            68% 73%,
+            58% 96%,
+            50% 100%,
+            42% 96%,
+            32% 73%,
+            22% 50%,
+            12% 25%
+        );
+
+    filter:
+        drop-shadow(
+            0 12px 12px rgba(66,53,55,.18)
+        );
+}
+
+.wrap-left{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            105deg,
+            #d4c3a5,
+            #eee2cb 65%
+        );
+
+    clip-path:
+        polygon(
+            7% 2%,
+            49% 12%,
+            45% 100%,
+            40% 95%,
+            25% 64%,
+            14% 30%
+        );
+
+    opacity:.85;
+}
+
+.wrap-right{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            260deg,
+            #d3c1a3,
+            #f0e5d0 67%
+        );
+
+    clip-path:
+        polygon(
+            93% 2%,
+            51% 12%,
+            55% 100%,
+            60% 95%,
+            75% 64%,
+            86% 30%
+        );
+
+    opacity:.8;
+}
+
+.wrap-fold1,
+.wrap-fold2,
+.wrap-fold3{
+    position:absolute;
+
+    bottom:15px;
+
+    height:240px;
+    width:3px;
+
+    border-radius:100%;
+
+    background:
+        rgba(115,91,67,.14);
+}
+
+.wrap-fold1{
+    left:38%;
+    transform:rotate(10deg);
+}
+
+.wrap-fold2{
+    left:50%;
+    height:265px;
+    background:
+        rgba(255,255,255,.30);
+}
+
+.wrap-fold3{
+    left:62%;
+    transform:rotate(-10deg);
+}
+
+.wrap-tie{
+    position:absolute;
+
+    left:50%;
+    bottom:54px;
+
+    width:74px;
+    height:20px;
+
+    transform:translateX(-50%);
+
+    z-index:8;
+
+    border-radius:4px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #d3bd94,
+            #ead8b8,
+            #c7ad82
+        );
+
+    box-shadow:
+        0 3px 5px rgba(67,53,40,.16);
+}
+
+.wrap-tie::before,
+.wrap-tie::after{
+    content:"";
+
+    position:absolute;
+    top:3px;
+
+    width:28px;
+    height:17px;
+
+    background:#ddc8a2;
+
+    border-radius:3px;
+}
+
+.wrap-tie::before{
+    right:100%;
+    transform:skewY(22deg);
+}
+
+.wrap-tie::after{
+    left:100%;
+    transform:skewY(-22deg);
+}
+
+
+/* =========================================================
+   TEXTO PARA ABRIR
+========================================================= */
+
+.open-text{
+    position:absolute;
+
+    left:50%;
+    bottom:3%;
+
+    transform:translateX(-50%);
+
+    font-size:16px;
+
+    opacity:0;
+
+    z-index:55;
+
+    white-space:nowrap;
+
+    transition:
+        opacity 1s ease;
+
+    pointer-events:none;
+}
+
+.open-text.visible{
+    opacity:.78;
+}
+
+
+/* =========================================================
+   CARTA
+========================================================= */
+
+.letter{
+    position:absolute;
+
+    z-index:20;
+
+    width:min(82vw,390px);
+    min-height:350px;
+
+    left:50%;
+    top:48%;
+
+    transform:
+        translate(-50%,-35%)
+        scale(.84);
+
+    opacity:0;
+
+    pointer-events:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fffdf5,
+            var(--papel)
+        );
+
+    border-radius:3px;
+
+    box-shadow:
+        0 20px 40px rgba(68,53,66,.24),
+        0 4px 8px rgba(68,53,66,.12);
+
+    padding:42px 28px 34px;
+
+    transition:
+        opacity .9s ease,
+        transform 1.5s cubic-bezier(.18,.82,.25,1);
+}
+
+.letter.emerging{
+    opacity:1;
+
+    transform:
+        translate(-50%,-48%)
+        scale(.92);
+}
+
+.letter.foreground{
+    z-index:70;
+
+    transform:
+        translate(-50%,-50%)
+        scale(1);
+
+    pointer-events:auto;
+}
+
+.letter::before{
+    content:"";
+
+    position:absolute;
+    inset:12px;
+
+    border:
+        1px solid rgba(185,155,103,.16);
+
+    pointer-events:none;
+}
+
+.letter-content{
+    position:relative;
+    z-index:3;
+}
+
+.letter-title{
+    margin:
+        0 0 24px;
+
+    text-align:center;
+
+    font-size:28px;
+    font-weight:normal;
+
+    color:#6a5665;
+
+    opacity:0;
+
+    transform:translateY(12px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.letter-title.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.letter p{
+    margin:
+        0 0 21px;
+
+    font-size:17px;
+    line-height:1.75;
+
+    text-align:left;
+
+    opacity:0;
+
+    transform:translateY(13px);
+
+    transition:
+        opacity 1.1s ease,
+        transform 1.1s ease;
+}
+
+.letter p.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+.final-flower{
+    text-align:center;
+
+    font-size:28px;
+
+    margin-top:7px;
+
+    opacity:0;
+
+    transform:scale(.6);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.8,.25,1);
+}
+
+.final-flower.show{
+    opacity:1;
+
+    transform:scale(1);
+}
+
+.back-button{
+    display:block;
+
+    margin:25px auto 0;
+
+    border:none;
+
+    background:transparent;
+
+    color:#766271;
+
+    font-size:15px;
+
+    padding:10px 15px;
+
+    opacity:0;
+
+    transform:translateY(8px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease,
+        color .3s ease;
+
+    cursor:pointer;
+}
+
+.back-button.show{
+    opacity:.75;
+
+    transform:translateY(0);
+}
+
+.back-button:hover{
+    color:#574754;
+}
+
+
+/* =========================================================
+   OSCURECER RAMO SIN DESENFOCAR
+========================================================= */
+
+.bouquet.focus::after{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+        rgba(65,51,63,.16);
+
+    z-index:60;
+
+    pointer-events:none;
+
+    opacity:1;
+
+    transition:
+        opacity 1.1s ease;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:430px){
+
+    .bouquet{
+        width:100vw;
+        height:94vh;
+    }
+
+    .envelope{
+        width:160px;
+        height:107px;
+        top:25px;
+    }
+
+    .wrapper{
+        width:350px;
+        height:275px;
+        bottom:17px;
+    }
+
+    .stems{
+        transform:
+            translateX(-50%)
+            scale(.92);
+
+        transform-origin:
+            bottom center;
+    }
+
+    /* Fondo */
+    .f1{left:15%;top:18%;}
+    .f2{left:62%;top:17%;}
+    .f3{left:34%;top:12%;}
+    .f4{left:48%;top:14%;}
+
+    /* Centro */
+    .f5{left:5%;top:27%;}
+    .f6{left:34%;top:23%;}
+    .f7{left:61%;top:27%;}
+    .f8{left:20%;top:34%;}
+
+    /* Frente */
+    .f9{left:5%;top:44%;}
+    .f10{left:36%;top:41%;}
+    .f11{left:63%;top:44%;}
+    .f12{left:18%;top:48%;}
+    .f13{left:51%;top:48%;}
+    .f14{left:31%;top:32%;}
+
+    .letter{
+        width:84vw;
+        min-height:360px;
+        padding:39px 24px 30px;
+    }
+
+    .letter-title{
+        font-size:26px;
+    }
+
+    .letter p{
+        font-size:16px;
+        line-height:1.7;
+    }
+}
+
+@media(max-height:680px){
+
+    .envelope{
+        top:12px;
+
+        transform:
+            translateX(-50%)
+            translateY(-25px)
+            scale(.8);
+    }
+
+    .envelope.visible{
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(.8);
+    }
+
+    .flowers{
+        transform:
+            translateY(-25px)
+            scale(.84);
+
+        transform-origin:
+            center bottom;
+    }
+
+    .stems{
+        transform:
+            translateX(-50%)
+            translateY(-15px)
+            scale(.82);
+    }
+
+    .wrapper{
+        transform:
+            translateX(-50%)
+            translateY(25px)
+            scale(.78);
+
+        transform-origin:
+            center bottom;
+    }
+
+    .wrapper.visible{
+        transform:
+            translateX(-50%)
+            translateY(0)
+            scale(.78);
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ESCENA 1
+===================================================== -->
+
+<section class="scene active" id="scene1">
+
+    <div class="start-container">
+
+        <div class="start-flower" id="startFlower">
+
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+            <span class="start-petal"></span>
+
+            <div class="flower-center"></div>
+
+        </div>
+
+        <div class="start-text">
+            Toca para continuar
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     ESCENA 2
+===================================================== -->
+
+<section class="scene" id="scene2">
+
+    <div class="bouquet" id="bouquet">
+
+
+        <!-- SOBRE -->
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-paper"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-line"></div>
+
+        </div>
+
+
+        <!-- TALLOS -->
+
+        <div class="stems">
+
+            <div class="stem s1"></div>
+            <div class="stem s2"></div>
+            <div class="stem s3"></div>
+            <div class="stem s4"></div>
+            <div class="stem s5"></div>
+            <div class="stem s6"></div>
+            <div class="stem s7"></div>
+
+        </div>
+
+
+        <!-- HOJAS -->
+
+        <div class="leaves">
+
+            <div class="leaf l1"></div>
+            <div class="leaf l2"></div>
+            <div class="leaf l3"></div>
+            <div class="leaf l4"></div>
+            <div class="leaf l5"></div>
+            <div class="leaf l6"></div>
+            <div class="leaf l7"></div>
+            <div class="leaf l8"></div>
+            <div class="leaf l9"></div>
+            <div class="leaf l10"></div>
+
+        </div>
+
+
+        <!-- FLORES -->
+
+        <div class="flowers" id="flowers"></div>
+
+
+        <!-- ENVOLTURA -->
+
+        <div class="wrapper" id="wrapper">
+
+            <div class="wrap-main"></div>
+            <div class="wrap-left"></div>
+            <div class="wrap-right"></div>
+
+            <div class="wrap-fold1"></div>
+            <div class="wrap-fold2"></div>
+            <div class="wrap-fold3"></div>
+
+            <div class="wrap-tie"></div>
+
+        </div>
+
+
+        <!-- CARTA -->
+
+        <article class="letter" id="letter">
+
+            <div class="letter-content">
+
+                <h1 class="letter-title" id="letterTitle">
+                    Para ti... 🌼
+                </h1>
+
+                <p id="paragraph1">
+                    Admiro mucho la gran personita que eres.
+                    No dejes que los días malos apaguen eso tan bonito
+                    que hay en ti; y cuando lleguen, quiero que sepas
+                    que estaré aquí para apoyarte.
+                </p>
+
+                <p id="paragraph2">
+                    La distancia no cambia eso, solo hace que estés
+                    un poquito más presente en mi mente.
+                </p>
+
+                <div class="final-flower" id="finalFlower">
+                    🌼
+                </div>
+
+                <button class="back-button" id="backButton">
+                    Volver al ramo
+                </button>
+
+            </div>
+
+        </article>
+
+
+        <div class="open-text" id="openText">
+            Toca para abrir
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<script>
+
+/* =========================================================
+   REFERENCIAS
+========================================================= */
+
+const scene1 =
+    document.getElementById("scene1");
+
+const scene2 =
+    document.getElementById("scene2");
+
+const startFlower =
+    document.getElementById("startFlower");
+
+const bouquet =
+    document.getElementById("bouquet");
+
+const envelope =
+    document.getElementById("envelope");
+
+const wrapper =
+    document.getElementById("wrapper");
+
+const flowersContainer =
+    document.getElementById("flowers");
+
+const leaves =
+    document.querySelectorAll(".leaf");
+
+const openText =
+    document.getElementById("openText");
+
+const letter =
+    document.getElementById("letter");
+
+const letterTitle =
+    document.getElementById("letterTitle");
+
+const paragraph1 =
+    document.getElementById("paragraph1");
+
+const paragraph2 =
+    document.getElementById("paragraph2");
+
+const finalFlower =
+    document.getElementById("finalFlower");
+
+const backButton =
+    document.getElementById("backButton");
+
+
+/* =========================================================
+   GERBERA
+========================================================= */
+
+function createGerbera(){
+
+    const flower =
+        document.createElement("div");
+
+    flower.className =
+        "gerbera";
+
+
+    /* Pétalos exteriores */
+
+    for(let i=0;i<8;i++){
+
+        const petal =
+            document.createElement("span");
+
+        petal.className =
+            "gerbera-petal";
+
+        flower.appendChild(petal);
+    }
+
+
+    /* Pétalos interiores */
+
+    for(let i=0;i<8;i++){
+
+        const petal =
+            document.createElement("span");
+
+        petal.className =
+            "gerbera-petal inner";
+
+        flower.appendChild(petal);
+    }
+
+
+    /* Centro café */
+
+    const center =
+        document.createElement("div");
+
+    center.className =
+        "gerbera-center";
+
+    flower.appendChild(center);
+
+
+    return flower;
+}
+
+
+/* =========================================================
+   ROSA
+========================================================= */
+
+function createRose(){
+
+    const rose =
+        document.createElement("div");
+
+    rose.className =
+        "rose";
+
+
+    const base =
+        document.createElement("div");
+
+    base.className =
+        "rose-base";
+
+    rose.appendChild(base);
+
+
+    /* Primera capa */
+
+    for(let i=1;i<=5;i++){
+
+        const petal =
+            document.createElement("div");
+
+        petal.className =
+            "rose-petal p" + i;
+
+        rose.appendChild(petal);
+    }
+
+
+    /* Segunda capa */
+
+    for(let i=6;i<=10;i++){
+
+        const petal =
+            document.createElement("div");
+
+        petal.className =
+            "rose-petal inner p" + i;
+
+        rose.appendChild(petal);
+    }
+
+
+    /* Centro enrollado */
+
+    const curl =
+        document.createElement("div");
+
+    curl.className =
+        "rose-curl";
+
+    rose.appendChild(curl);
+
+
+    return rose;
+}
+
+
+/* =========================================================
+   CREAR RAMO
+========================================================= */
+
+function createBouquet(){
+
+    flowersContainer.innerHTML = "";
+
+
+    /*
+       14 flores:
+       7 gerberas
+       7 rosas
+
+       Se alternan para que el amarillo
+       tenga diferentes formas y texturas.
+    */
+
+    const flowerTypes = [
+
+        "gerbera",
+        "rose",
+        "gerbera",
+        "rose",
+
+        "gerbera",
+        "rose",
+        "gerbera",
+        "rose",
+
+        "gerbera",
+        "rose",
+        "gerbera",
+        "rose",
+
+        "gerbera",
+        "rose"
+
+    ];
+
+
+    flowerTypes.forEach((type,index)=>{
+
+        const flower =
+            document.createElement("div");
+
+        flower.className =
+            "flower f" + (index+1);
+
+
+        if(type === "gerbera"){
+
+            flower.appendChild(
+                createGerbera()
+            );
+
+        }else{
+
+            flower.appendChild(
+                createRose()
+            );
+
+        }
+
+
+        flowersContainer.appendChild(flower);
+
+    });
+
+
+    /* Reiniciar */
+
+    document
+        .querySelectorAll(".flower")
+        .forEach(f=>{
+            f.classList.remove("visible");
+        });
+
+
+    leaves.forEach(leaf=>{
+        leaf.classList.remove("visible");
+    });
+
+
+    wrapper.classList.remove("visible");
+
+    envelope.classList.remove("visible");
+
+    openText.classList.remove("visible");
+
+
+    /* =====================================================
+       FLORES
+    ===================================================== */
+
+    const flowerElements =
+        document.querySelectorAll(".flower");
+
+
+    flowerElements.forEach(
+        (flower,index)=>{
+
+            setTimeout(()=>{
+
+                flower.classList.add(
+                    "visible"
+                );
+
+            },500 + index * 360);
+
+        }
+    );
+
+
+    const flowerTime =
+        500 +
+        flowerElements.length * 360;
+
+
+    /* =====================================================
+       HOJAS
+    ===================================================== */
+
+    leaves.forEach(
+        (leaf,index)=>{
+
+            setTimeout(()=>{
+
+                leaf.classList.add(
+                    "visible"
+                );
+
+            },
+            flowerTime +
+            120 +
+            index * 150);
+
+        }
+    );
+
+
+    /* =====================================================
+       ENVOLTURA
+    ===================================================== */
+
+    setTimeout(()=>{
+
+        wrapper.classList.add(
+            "visible"
+        );
+
+    },
+    flowerTime + 1450);
+
+
+    /* =====================================================
+       SOBRE
+    ===================================================== */
+
+    setTimeout(()=>{
+
+        envelope.classList.add(
+            "visible"
+        );
+
+    },
+    flowerTime + 2350);
+
+
+    /* =====================================================
+       TEXTO
+    ===================================================== */
+
+    setTimeout(()=>{
+
+        openText.classList.add(
+            "visible"
+        );
+
+    },
+    flowerTime + 4550);
+
+}
+
+
+/* =========================================================
+   ESCENA 1 → ESCENA 2
+========================================================= */
+
+startFlower.addEventListener(
+    "click",
+    ()=>{
+
+        startFlower.classList.add(
+            "exit"
+        );
+
+
+        setTimeout(()=>{
+
+            scene1.classList.remove(
+                "active"
+            );
+
+            scene2.classList.add(
+                "active"
+            );
+
+            createBouquet();
+
+        },800);
+
+    }
+);
+
+
+/* =========================================================
+   ABRIR SOBRE
+========================================================= */
+
+envelope.addEventListener(
+    "click",
+    ()=>{
+
+        /*
+           Evita que se vuelva a ejecutar
+           mientras la animación está ocurriendo.
+        */
+
+        if(
+            envelope.classList.contains("open")
+        ){
+            return;
+        }
+
+
+        openText.classList.remove(
+            "visible"
+        );
+
+
+        envelope.classList.add(
+            "open"
+        );
+
+
+        setTimeout(()=>{
+
+            extractLetter();
+
+        },1000);
+
+    }
+);
+
+
+/* =========================================================
+   EXTRAER CARTA
+========================================================= */
+
+function extractLetter(){
+
+    /*
+       La carta comienza detrás del ramo
+       y posteriormente sube hacia el frente.
+    */
+
+    letter.classList.add(
+        "emerging"
+    );
+
+
+    setTimeout(()=>{
+
+        /*
+           NO utilizamos blur.
+           Solo oscurecemos ligeramente el ramo.
+        */
+
+        bouquet.classList.add(
+            "focus"
+        );
+
+
+        letter.classList.add(
+            "foreground"
+        );
+
+
+        showLetterContent();
+
+    },1700);
+
+}
+
+
+/* =========================================================
+   CONTENIDO DE CARTA
+========================================================= */
+
+function showLetterContent(){
+
+    setTimeout(()=>{
+
+        letterTitle.classList.add(
+            "show"
+        );
+
+    },600);
+
+
+    setTimeout(()=>{
+
+        paragraph1.classList.add(
+            "show"
+        );
+
+    },1800);
+
+
+    setTimeout(()=>{
+
+        paragraph2.classList.add(
+            "show"
+        );
+
+    },4000);
+
+
+    setTimeout(()=>{
+
+        finalFlower.classList.add(
+            "show"
+        );
+
+    },5700);
+
+
+    setTimeout(()=>{
+
+        backButton.classList.add(
+            "show"
+        );
+
+    },7700);
+
+}
+
+
+/* =========================================================
+   VOLVER AL RAMO
+========================================================= */
+
+backButton.addEventListener(
+    "click",
+    ()=>{
+
+        backButton.classList.remove(
+            "show"
+        );
+
+        finalFlower.classList.remove(
+            "show"
+        );
+
+        paragraph2.classList.remove(
+            "show"
+        );
+
+        paragraph1.classList.remove(
+            "show"
+        );
+
+        letterTitle.classList.remove(
+            "show"
+        );
+
+
+        letter.classList.remove(
+            "foreground"
+        );
+
+        bouquet.classList.remove(
+            "focus"
+        );
+
+
+        setTimeout(()=>{
+
+            letter.classList.remove(
+                "emerging"
+            );
+
+            envelope.classList.remove(
+                "open"
+            );
+
+            openText.classList.add(
+                "visible"
+            );
+
+        },1200);
+
+    }
+);
+
+</script>
+
+</body>
+</html>
